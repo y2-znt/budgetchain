@@ -1,0 +1,22 @@
+.transaction-table {
+  width: 45%;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.transaction-table th {
+  background-color: #f2f2f2;
+}

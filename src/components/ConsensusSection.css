@@ -1,0 +1,21 @@
+.consensus-section {
+  width: 45%;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consensus-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.consensus-section li {
+  margin: 5px 0;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+}
