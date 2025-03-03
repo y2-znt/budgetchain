@@ -4,6 +4,13 @@
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.consensus-section h2 {
+  margin-bottom: 20px;
 }
 
 .consensus-section ul {
@@ -12,10 +19,98 @@
 }
 
 .consensus-section li {
-  margin: 5px 0;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.consensus-section li.validated {
+  background-color: #f1f8e9;
 }
 
 .success {
   color: green;
   font-weight: bold;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+}
+
+.loader {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  animation: pulse 1.5s infinite;
+  margin: auto;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #666;
+}
+
+.hint {
+  font-size: 0.9em;
+  color: #999;
+  font-style: italic;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.5s ease-in-out;
+}
+
+.validators-list {
+  margin-top: 15px;
+}
+
+.approved {
+  color: #2e7d32;
+}
+
+.waiting {
+  color: #f57f17;
+}
+
+.dot-animation::after {
+  content: "...";
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%,
+  100% {
+    content: "...";
+  }
+}
+
+.consensus-container {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #fafafa;
 }

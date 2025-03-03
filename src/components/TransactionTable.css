@@ -20,3 +20,32 @@
 .transaction-table th {
   background-color: #f2f2f2;
 }
+
+.loader {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  animation: pulse 1.5s infinite;
+}
+
+.pending-row {
+  background-color: #fff8e1;
+}
+
+.status-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.status-badge.confirmed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.pending {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
