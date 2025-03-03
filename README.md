@@ -15,6 +15,7 @@ Cette application React démontre une maquette Proof of Concept pour le projet B
 
 ## Structure du Projet
 
+```
 BudgetChain-PoC/
 ├── package.json
 ├── public/
@@ -32,6 +33,7 @@ BudgetChain-PoC/
 │ ├── ConsensusSection.js
 │ └── ConsensusSection.css
 └── README.md
+```
 
 ## Utilisation
 
