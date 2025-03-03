@@ -7,13 +7,24 @@ import initialTransactions from "./data/initialTransactions";
 function App() {
   const [transactions, setTransactions] = useState(initialTransactions);
   const [pendingTransaction, setPendingTransaction] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Simuler un temps de chargement initial
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
     // Simulation : ajouter une nouvelle transaction toutes les 10 secondes
     const interval = setInterval(() => {
-      const newTx = generateDummyTransaction();
-      setTransactions((prev) => [newTx, ...prev]);
-      setPendingTransaction(newTx);
+      setIsLoading(true); // Activer le loading avant d'ajouter une transaction
+
+      setTimeout(() => {
+        const newTx = generateDummyTransaction();
+        setTransactions((prev) => [newTx, ...prev]);
+        setPendingTransaction(newTx);
+        setIsLoading(false); // Désactiver le loading après avoir ajouté la transaction
+      }, 800); // Délai simulé pour l'ajout d'une transaction
     }, 10000);
 
     return () => clearInterval(interval);
@@ -40,11 +51,15 @@ function App() {
   return (
     <div className="App">
       <h1>BudgetChain PoC</h1>
+      {isLoading && (
+        <div className="global-loader">Chargement des données...</div>
+      )}
       <div className="container">
-        <TransactionTable transactions={transactions} />
+        <TransactionTable transactions={transactions} isLoading={isLoading} />
         <ConsensusSection
           pendingTransaction={pendingTransaction}
           confirmTransaction={confirmTransaction}
+          isLoading={isLoading}
         />
       </div>
     </div>

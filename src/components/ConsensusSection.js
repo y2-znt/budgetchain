@@ -3,7 +3,11 @@ import "./ConsensusSection.css";
 
 const validators = ["Validator A", "Validator B", "Validator C"];
 
-const ConsensusSection = ({ pendingTransaction, confirmTransaction }) => {
+const ConsensusSection = ({
+  pendingTransaction,
+  confirmTransaction,
+  isLoading,
+}) => {
   const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
@@ -30,17 +34,34 @@ const ConsensusSection = ({ pendingTransaction, confirmTransaction }) => {
   return (
     <div className="consensus-section">
       <h2>Validation du Consensus</h2>
-      {pendingTransaction ? (
-        <div>
+      {isLoading ? (
+        <div className="loader">Recherche de transactions à valider...</div>
+      ) : pendingTransaction ? (
+        <div className="consensus-container">
           <p>
             Validation de la transaction :{" "}
             <strong>{pendingTransaction.id}</strong>
           </p>
-          <ul>
+          <div className="progress-bar">
+            <div
+              className="progress"
+              style={{ width: `${(currentStep / validators.length) * 100}%` }}
+            ></div>
+          </div>
+          <ul className="validators-list">
             {validators.map((validator, index) => (
-              <li key={validator}>
+              <li
+                key={validator}
+                className={index < currentStep ? "validated" : ""}
+              >
                 {validator}:{" "}
-                {index < currentStep ? "✅ Approuvé" : "En attente..."}
+                {index < currentStep ? (
+                  <span className="approved">✅ Approuvé</span>
+                ) : (
+                  <span className="waiting">
+                    <span className="dot-animation">En attente</span>
+                  </span>
+                )}
               </li>
             ))}
           </ul>
@@ -51,7 +72,12 @@ const ConsensusSection = ({ pendingTransaction, confirmTransaction }) => {
           )}
         </div>
       ) : (
-        <p>Aucune transaction en attente de validation.</p>
+        <div className="empty-state">
+          <p>Aucune transaction en attente de validation.</p>
+          <p className="hint">
+            Une nouvelle transaction sera générée automatiquement...
+          </p>
+        </div>
       )}
     </div>
   );
